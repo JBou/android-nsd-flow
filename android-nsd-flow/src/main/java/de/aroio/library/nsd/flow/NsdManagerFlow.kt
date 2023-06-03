@@ -32,9 +32,9 @@ class NsdManagerFlow(private val nsdManagerCompat: NsdManagerCompat) {
     fun registerService(registrationConfiguration: RegistrationConfiguration): Flow<RegistrationEvent> = callbackFlow {
         nsdManagerCompat.registerService(
                 serviceInfo = NsdServiceInfo().apply {
-                    serviceName = registrationConfiguration.serviceName
-                    port = registrationConfiguration.port
-                    serviceType = registrationConfiguration.serviceType
+                    serviceName = registrationConfiguration.nsdServiceInfo.serviceName
+                    port = registrationConfiguration.nsdServiceInfo.port
+                    serviceType = registrationConfiguration.nsdServiceInfo.serviceType
                 },
                 protocolType = registrationConfiguration.protocolType,
                 listener = RegistrationListenerFlow(this)
