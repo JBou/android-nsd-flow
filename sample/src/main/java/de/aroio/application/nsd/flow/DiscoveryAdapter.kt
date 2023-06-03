@@ -41,21 +41,15 @@ class DiscoveryAdapter : RecyclerView.Adapter<DiscoveryViewHolder>() {
     override fun getItemCount(): Int = items.size
 
     fun addItem(discoveryRecord: DiscoveryRecord) {
-        val count = itemCount
         items = items.plus(discoveryRecord)
-        notifyItemInserted(count)
     }
 
     fun removeItem(discoveryRecord: DiscoveryRecord) {
-        val count = itemCount
         items = items.minus(discoveryRecord)
-        notifyItemRemoved(count)
     }
 
     fun clear() {
-        val count = itemCount
         items = listOf()
-        notifyItemRangeRemoved(0, count)
     }
 
 }
