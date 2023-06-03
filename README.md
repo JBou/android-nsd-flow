@@ -1,6 +1,6 @@
 # Android Network Service Discovery Flow
 
-[![](https://jitpack.io/v/aroio/android-nsd-flow.svg)](https://jitpack.io/#aroio/android-nsd-flow)
+[![](https://jitpack.io/v/JBou/android-nsd-flow.svg)](https://jitpack.io/#JBou/android-nsd-flow)
 
 A Flow wrapper around the Android [NsdManager](https://developer.android.com/reference/android/net/nsd/NsdManager.html) api.
 If you are using RxJava I would recommend to check out [Android Network Service Discovery Rx](https://github.com/ToxicBakery/Android-Nsd-Rx)
