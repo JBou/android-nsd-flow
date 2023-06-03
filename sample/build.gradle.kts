@@ -4,19 +4,19 @@ plugins {
 }
 
 android {
-    setCompileSdkVersion(30)
-    buildToolsVersion = "30.0.2"
+    namespace = "de.aroio.application.nsd.flow"
+    compileSdk = 33
     defaultConfig {
         applicationId = "de.aroro.application.nsd.flow"
-        minSdkVersion(19)
-        targetSdkVersion(30)
+        minSdk = 19
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("debug") {
-            isTestCoverageEnabled = true
+            enableUnitTestCoverage = true
         }
         getByName("release") {
             isMinifyEnabled = false
@@ -33,11 +33,11 @@ dependencies {
     implementation(Dependencies.Kotlin.Coroutines.android)
     implementation(Dependencies.Android.annotation)
 
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     testImplementation(Dependencies.JUnit.jupiter)
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }

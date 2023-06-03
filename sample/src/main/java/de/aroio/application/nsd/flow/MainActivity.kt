@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import de.aroio.library.nsd.flow.NsdManagerFlow
 import de.aroio.library.nsd.flow.discovery.DiscoveryConfiguration
 import de.aroio.library.nsd.flow.discovery.DiscoveryEvent
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toggleButton: Button

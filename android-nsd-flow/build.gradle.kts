@@ -7,10 +7,10 @@ plugins {
 group = "com.github.aroio"
 
 android {
-    setCompileSdkVersion(30)
+    namespace = "de.aroro.library.nsd.flow"
+    compileSdk = 30
     defaultConfig {
-        setMinSdkVersion(19)
-        setTargetSdkVersion(30)
+        minSdk = 19
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
         // Enabling multidex support.
@@ -18,7 +18,7 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            isTestCoverageEnabled = true
+            enableUnitTestCoverage = true
         }
         getByName("release") {
             isMinifyEnabled = false
@@ -28,14 +28,17 @@ android {
             )
         }
     }
-
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        resources {
+            excludes += setOf("META-INF/AL2.0", "META-INF/LGPL2.1")
+        }
     }
 
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -50,5 +53,5 @@ dependencies {
 
     androidTestImplementation(Dependencies.Mockk.core)
     androidTestImplementation(Dependencies.Kotlin.Coroutines.test)
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }

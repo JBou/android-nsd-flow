@@ -5,7 +5,7 @@ import android.net.nsd.NsdServiceInfo
 import de.aroio.library.nsd.flow.RegistrationFailed
 import de.aroio.library.nsd.flow.UnregistrationFailed
 import kotlinx.coroutines.channels.ProducerScope
-import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.channels.trySendBlocking
 
 internal class RegistrationListenerFlow(
         private val producerScope: ProducerScope<RegistrationEvent>
@@ -19,11 +19,11 @@ internal class RegistrationListenerFlow(
     }
 
     override fun onServiceRegistered(nsdServiceInfo: NsdServiceInfo) {
-        producerScope.sendBlocking(RegistrationEvent.ServiceRegistered(nsdServiceInfo))
+        producerScope.trySendBlocking(RegistrationEvent.ServiceRegistered(nsdServiceInfo))
     }
 
     override fun onServiceUnregistered(nsdServiceInfo: NsdServiceInfo) {
-        producerScope.sendBlocking(RegistrationEvent.ServiceUnregistered(nsdServiceInfo))
+        producerScope.trySendBlocking(RegistrationEvent.ServiceUnregistered(nsdServiceInfo))
     }
 
 }
