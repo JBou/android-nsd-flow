@@ -56,13 +56,15 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                groupId = "com.github.aroio"
-                artifactId = "nsd-flow"
-                version = "0.1.0"
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = "com.github.aroio"
+            artifactId = "nsd-flow"
+            version = "0.1.0"
+
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
